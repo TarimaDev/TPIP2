@@ -1,0 +1,8 @@
+Carpeta para iconos del proyecto.
+
+Aquí puedes colocar:
+- Iconos SVG
+- Iconos PNG
+- Iconos ICO
+- Iconos de redes sociales
+- Iconos de navegación

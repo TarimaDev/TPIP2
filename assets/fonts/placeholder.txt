@@ -1,0 +1,8 @@
+Carpeta para fuentes del proyecto.
+
+Aquí puedes colocar:
+- Fuentes TTF
+- Fuentes OTF
+- Fuentes WOFF
+- Fuentes WOFF2
+- Fuentes personalizadas
