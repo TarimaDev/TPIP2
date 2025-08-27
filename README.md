@@ -1,7 +1,11 @@
 # Proyecto
 
 ## Descripción
-Descripción del proyecto aquí.
+Los integrantes del grupo son:
+Marco ayquipa
+Gabriel Dino
+Jeremías Paletta
+Matías Sione
 
 ## Estructura
 - `index.html` - Página principal
