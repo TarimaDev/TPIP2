@@ -1,5 +1,12 @@
 /* Estilos principales */
 
+/* Variables CSS */
+:root{
+    --color-fondo: #030712;
+    --color-letras: #00bbff;
+    --color-botones: #f5339b;
+}
+
 /* Reset básico */
 * {
     margin: 0;
