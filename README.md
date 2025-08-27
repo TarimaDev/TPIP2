@@ -6,7 +6,6 @@ Marco ayquipa
 Gabriel Dino
 Jeremías Paletta
 Matías Sione
-nashei
 
 ## Estructura
 - `index.html` - Página principal
