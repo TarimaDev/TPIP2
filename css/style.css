@@ -1,7 +1,7 @@
 /* Estilos principales */
 
 /* Variables CSS */
-:root{
+:root {
     --color-fondo: #030712;
     --color-letras: #00bbff;
     --color-botones: #f5339b;
@@ -21,13 +21,6 @@ body {
     color: #333;
 }
 
-/* Estilos del header */
-header {
-    background-color: #f4f4f4;
-    padding: 1rem;
-    text-align: center;
-}
-
 /* Estilos del main */
 main {
     padding: 2rem;
@@ -42,4 +35,20 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.boton {
+    color: white;
+    background-color: var(--color-botones);
+    border: none;
+    padding: 10px 50px;
+    border-radius: 50px;
+    transition: 0.5s ease;
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.boton:hover {
+    transform: scale(1.05);
 }
