@@ -12,9 +12,9 @@ El proyecto representa la culminación de nuestros aprendizajes en el segundo cu
 
 | Nombre | Rol |
 |--------|-----|
-| **Marco Ayquipa** | Desarrollador Frontend |
-| **Gabriel Dino** | Desarrollador Backend |
-| **Jeremías Paletta** | Diseñador UI/UX |
+| **Marco Ayquipa** | Desarrollador Full Stack |
+| **Gabriel Dino** | Desarrollador Full Stack |
+| **Jeremías Paletta** | Desarrollador Full Stack |
 | **Matías Sione** | Desarrollador Full Stack |
 
 ---
@@ -79,7 +79,7 @@ Durante el desarrollo de este proyecto, hemos puesto en práctica:
 **Institución:** Universidad Tecnológica Nacional (UTN)  
 **Carrera:** Tecnicatura Universitaria en Programación  
 **Cuatrimestre:** Segundo  
-**Año:** 2024
+**Año:** 2025
 
 ---
 
