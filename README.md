@@ -79,7 +79,7 @@ Durante el desarrollo de este proyecto, hemos puesto en práctica:
 **Institución:** Universidad Tecnológica Nacional (UTN)  
 **Carrera:** Tecnicatura Universitaria en Programación  
 **Cuatrimestre:** Segundo  
-**Año:** 2024
+**Año:** 2025
 
 ---
 
