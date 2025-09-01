@@ -112,3 +112,70 @@ footer {
 .boton:hover {
     transform: scale(1.05);
 }
+
+/* Estilos para secciones */
+section {
+    margin: 50px 0px;
+}
+
+/* Estilos para imágenes */
+.imagenes {
+    max-width: 60%;
+}
+
+/* Estilos para precios */
+.precios {
+    color: white;
+}
+
+.tarjeta-precios {
+    max-width: 300px;
+}
+
+.tarjeta-precios .card {
+    box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.75);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.75);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.75);
+}
+
+.card-body {
+    color: var(--color-fondo);
+}
+
+.card-body li {
+    font-size: 30px;
+}
+
+/* Estilos para la página de planes */
+.planes-body {
+    background-color: var(--color-fondo);
+    color: var(--color-letras);
+}
+
+.planes-card {
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-letras);
+}
+
+.planes-card-popular {
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-botones);
+}
+
+.planes-card-header {
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-letras);
+}
+
+.planes-card-header-popular {
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-botones);
+}
+
+.planes-text {
+    color: var(--color-letras);
+}
+
+.planes-text-popular {
+    color: var(--color-botones);
+}
