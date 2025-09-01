@@ -52,3 +52,59 @@ footer {
 .boton:hover {
     transform: scale(1.05);
 }
+
+/* Estilos generales para la navbar */
+.navbar {
+    background-color: var(--color-fondo) !important;
+}
+
+.navbar-brand {
+    color: var(--color-letras) !important;
+}
+
+.navbar-nav .nav-link {
+    color: var(--color-letras) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--color-botones) !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--color-botones) !important;
+    font-weight: bold;
+}
+
+/* Estilos para la página de planes */
+.planes-body {
+    background-color: var(--color-fondo);
+    color: var(--color-letras);
+}
+
+.planes-card {
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-letras);
+}
+
+.planes-card-popular {
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-botones);
+}
+
+.planes-card-header {
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-letras);
+}
+
+.planes-card-header-popular {
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-botones);
+}
+
+.planes-text {
+    color: var(--color-letras);
+}
+
+.planes-text-popular {
+    color: var(--color-botones);
+}
