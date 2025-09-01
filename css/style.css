@@ -16,9 +16,10 @@
 
 /* Estilos del body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Teko", sans-serif;
     line-height: 1.6;
     color: #333;
+    background-color: var(--color-fondo);
 }
 
 /* Estilos del main */
@@ -37,33 +38,23 @@ footer {
     width: 100%;
 }
 
-.boton {
-    color: white;
-    background-color: var(--color-botones);
-    border: none;
-    padding: 10px 50px;
-    border-radius: 50px;
-    transition: 0.5s ease;
-    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
--webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
-}
-
-.boton:hover {
-    transform: scale(1.05);
-}
-
 /* Estilos generales para la navbar */
 .navbar {
     background-color: var(--color-fondo) !important;
+    border-bottom: 0.1rem solid rgb(187, 187, 187);
 }
 
 .navbar-brand {
-    color: var(--color-letras) !important;
+    color: white !important;
+    font-weight: 300px !important;
+    font-size: 23px;
 }
 
 .navbar-nav .nav-link {
-    color: var(--color-letras) !important;
+    color: white !important;
+    font-weight: 300px !important;
+    font-size: 23px;
+    display: inline;
 }
 
 .navbar-nav .nav-link:hover {
@@ -73,38 +64,51 @@ footer {
 .navbar-nav .nav-link.active {
     color: var(--color-botones) !important;
     font-weight: bold;
+    position: relative;
 }
 
-/* Estilos para la página de planes */
-.planes-body {
+.navbar-nav .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.25rem;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
+.nav-item {
+    margin: 5px 13px 5px 13px;
+}
+
+.navbar-toggler {
+    background-color: var(--color-botones);
+}
+
+.dropdown-menu {
     background-color: var(--color-fondo);
-    color: var(--color-letras);
+    border: 1px solid rgb(187, 187, 187);
 }
 
-.planes-card {
+.dropdown-item:hover {
     background-color: var(--color-fondo);
-    border: 2px solid var(--color-letras);
 }
 
-.planes-card-popular {
-    background-color: var(--color-fondo);
-    border: 2px solid var(--color-botones);
+/* Estilos para botones */
+.boton {
+    color: white;
+    background-color: var(--color-botones);
+    border: none;
+    padding: 10px 50px;
+    border-radius: 50px;
+    transition: 0.5s ease;
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
 }
 
-.planes-card-header {
-    background-color: var(--color-fondo);
-    border-bottom: 1px solid var(--color-letras);
-}
-
-.planes-card-header-popular {
-    background-color: var(--color-fondo);
-    border-bottom: 1px solid var(--color-botones);
-}
-
-.planes-text {
-    color: var(--color-letras);
-}
-
-.planes-text-popular {
-    color: var(--color-botones);
+.boton:hover {
+    transform: scale(1.05);
 }
