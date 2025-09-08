@@ -286,16 +286,32 @@ section {
     background-color: var(--color-fondo);
     border: 2px solid var(--color-letras);
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrito-card:hover {
+    border-color: var(--color-botones);
+    box-shadow: 0 5px 15px rgba(245, 51, 155, 0.2);
 }
 
 .carrito-card .card-body {
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-card:hover .card-body {
+    color: var(--color-botones);
 }
 
 .carrito-card .card-header {
     background-color: var(--color-fondo);
     border-bottom: 1px solid var(--color-letras);
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .carrito-item {
@@ -303,53 +319,85 @@ section {
     border: 1px solid var(--color-letras);
     border-radius: 8px;
     margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrito-item:hover {
+    border-color: var(--color-botones);
+    box-shadow: 0 3px 10px rgba(245, 51, 155, 0.2);
+    transform: translateY(-2px);
 }
 
 .carrito-item .card-body {
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .carrito-resumen {
     background-color: var(--color-fondo);
     border: 2px solid var(--color-botones);
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrito-resumen:hover {
+    box-shadow: 0 8px 20px rgba(245, 51, 155, 0.3);
 }
 
 .carrito-resumen .card-header {
     background-color: var(--color-fondo);
     border-bottom: 1px solid var(--color-botones);
     color: var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .carrito-resumen .card-body {
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .carrito-vacio {
     text-align: center;
     padding: 3rem;
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .carrito-vacio h5 {
     color: var(--color-letras);
     margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .carrito-vacio p {
     color: var(--color-letras);
     margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .btn-outline-danger {
     border-color: var(--color-botones);
     color: var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .btn-outline-danger:hover {
     background-color: var(--color-botones);
     border-color: var(--color-botones);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(245, 51, 155, 0.3);
 }
 
 .boton:disabled {
@@ -362,11 +410,36 @@ section {
     transform: none;
 }
 
+/* Animaciones de entrada para el carrito */
+.carrito-card,
+.carrito-resumen {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideIn 0.6s ease forwards;
+}
+
+.carrito-card {
+    animation-delay: 0.1s;
+}
+
+.carrito-resumen {
+    animation-delay: 0.2s;
+}
+
+/* Título del carrito con entrada */
+.carrito-body h1 {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
 /* Estilos para mensajes de alerta */
 .alert {
     border-radius: 8px;
     font-family: "Teko", sans-serif;
     font-size: 18px;
+    transition: all 0.3s ease;
 }
 
 .alert-success {
