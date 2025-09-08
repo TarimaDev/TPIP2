@@ -3,61 +3,96 @@
 // Variable para manejar el carrito de compras
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
+// Variable para almacenar los datos de los planes
+let datosPlanes = null;
+
 // Cuando la página se carga completamente
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Página cargada correctamente');
     
-    // Verificar en qué página estamos para inicializar las funciones correspondientes
-    if (window.location.pathname.includes('planes.html')) {
-        initPlanes();
-    } else if (window.location.pathname.includes('carrito.html')) {
-        initCarrito();
-    }
-    
-    // Actualizar el contador del carrito en la barra de navegación
-    actualizarContadorCarrito();
+    // Cargar datos de los planes desde el archivo JSON
+    cargarDatosPlanes().then(() => {
+        // Verificar en qué página estamos para inicializar las funciones correspondientes
+        if (window.location.pathname.includes('planes.html')) {
+            initPlanes();
+        } else if (window.location.pathname.includes('carrito.html')) {
+            initCarrito();
+        }
+        
+        // Actualizar el contador del carrito en la barra de navegación
+        actualizarContadorCarrito();
+    });
 });
+
+// Función para cargar datos desde el archivo JSON
+async function cargarDatosPlanes() {
+    try {
+        const response = await fetch('../mock/data.json');
+        const data = await response.json();
+        datosPlanes = data;
+        console.log('Datos de planes cargados:', datosPlanes);
+    } catch (error) {
+        console.error('Error al cargar los datos de planes:', error);
+        // Fallback a datos hardcodeados si falla la carga
+        datosPlanes = {
+            planes: [
+                {
+                    id: 1,
+                    nombre: "Plan Básico",
+                    precio: 99,
+                    descripcion: "Servicio básico, Soporte por email, Actualizaciones mensuales"
+                },
+                {
+                    id: 2,
+                    nombre: "Plan Profesional",
+                    precio: 199,
+                    descripcion: "Todo del plan básico, Soporte prioritario, Funciones avanzadas"
+                },
+                {
+                    id: 3,
+                    nombre: "Plan Empresarial",
+                    precio: 399,
+                    descripcion: "Todo del plan profesional, Soporte 24/7, Funciones personalizadas"
+                }
+            ],
+            configuracion: {
+                costoServicio: 25
+            }
+        };
+    }
+}
 
 // Funciones para manejar los planes
 
 function initPlanes() {
     const botonesSeleccionar = document.querySelectorAll('.planes-card .boton, .planes-card-popular .boton');
     
-    botonesSeleccionar.forEach((boton) => {
+    botonesSeleccionar.forEach((boton, index) => {
         boton.addEventListener('click', function() {
-            const plan = obtenerDatosPlanDesdeHTML(boton);
+            const plan = obtenerDatosPlanDesdeJSON(index);
             agregarAlCarrito(plan);
             mostrarMensaje('Plan agregado al carrito', 'success');
         });
     });
 }
 
-function obtenerDatosPlanDesdeHTML(boton) {
-    const tarjeta = boton.closest('.card');
+function obtenerDatosPlanDesdeJSON(index) {
+    if (!datosPlanes || !datosPlanes.planes) {
+        console.error('Datos de planes no disponibles');
+        return null;
+    }
     
-    // Sacar el nombre del plan del título
-    const nombreElemento = tarjeta.querySelector('.card-header h4');
-    const nombre = nombreElemento ? nombreElemento.textContent.trim() : 'Plan Desconocido';
-    
-    // Sacar el precio del texto
-    const precioElemento = tarjeta.querySelector('.card-body h2');
-    const precioTexto = precioElemento ? precioElemento.textContent : '$0';
-    const precio = parseInt(precioTexto.replace('$', '').replace('/mes', '')) || 0;
-    
-    // Juntar todas las características en una descripción
-    const listaElementos = tarjeta.querySelectorAll('.card-body li');
-    const descripcion = Array.from(listaElementos).map(li => li.textContent.trim()).join(', ');
-    
-    // Asignar un ID según el tipo de plan
-    let id = 1;
-    if (nombre.includes('Profesional')) id = 2;
-    else if (nombre.includes('Empresarial')) id = 3;
+    const plan = datosPlanes.planes[index];
+    if (!plan) {
+        console.error('Plan no encontrado en el índice:', index);
+        return null;
+    }
     
     return {
-        id: id,
-        nombre: nombre,
-        precio: precio,
-        descripcion: descripcion
+        id: plan.id,
+        nombre: plan.nombre,
+        precio: plan.precio,
+        descripcion: plan.descripcion
     };
 }
 
@@ -132,7 +167,9 @@ function configurarEventosCarrito() {
 function actualizarResumenCompra() {
     // Calcular el subtotal sumando todos los precios
     const subtotal = carrito.reduce((total, item) => total + item.precio, 0);
-    const costoPorServicio = 25; // Costo fijo por cada servicio
+    
+    // Obtener el costo de servicio desde la configuración
+    const costoPorServicio = datosPlanes?.configuracion?.costoServicio || 25;
     const costoEnvio = carrito.length * costoPorServicio;
     const total = subtotal + costoEnvio;
     

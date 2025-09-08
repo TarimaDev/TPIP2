@@ -1,26 +1,43 @@
 {
-    "usuarios": [
+    "planes": [
         {
             "id": 1,
-            "nombre": "Usuario 1",
-            "email": "usuario1@ejemplo.com"
+            "nombre": "Plan Básico",
+            "precio": 99,
+            "descripcion": "Servicio básico, Soporte por email, Actualizaciones mensuales",
+            "caracteristicas": [
+                "Servicio básico",
+                "Soporte por email",
+                "Actualizaciones mensuales"
+            ]
         },
         {
             "id": 2,
-            "nombre": "Usuario 2",
-            "email": "usuario2@ejemplo.com"
+            "nombre": "Plan Profesional",
+            "precio": 199,
+            "descripcion": "Todo del plan básico, Soporte prioritario, Funciones avanzadas",
+            "caracteristicas": [
+                "Todo del plan básico",
+                "Soporte prioritario",
+                "Funciones avanzadas"
+            ],
+            "popular": true
+        },
+        {
+            "id": 3,
+            "nombre": "Plan Empresarial",
+            "precio": 399,
+            "descripcion": "Todo del plan profesional, Soporte 24/7, Funciones personalizadas",
+            "caracteristicas": [
+                "Todo del plan profesional",
+                "Soporte 24/7",
+                "Funciones personalizadas"
+            ]
         }
     ],
-    "productos": [
-        {
-            "id": 1,
-            "nombre": "Producto 1",
-            "precio": 100
-        },
-        {
-            "id": 2,
-            "nombre": "Producto 2",
-            "precio": 200
-        }
-    ]
+    "configuracion": {
+        "costoServicio": 25,
+        "moneda": "USD",
+        "impuestos": 0
+    }
 }
