@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class="carrito-body">
     <header>
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -67,12 +67,12 @@
 
     <main>
         <div class="container mt-4">
-            <h1>🛒 Carrito de Compras</h1>
+            <h1 class="text-center mb-5" style="color: var(--color-letras);">🛒 Carrito de Compras</h1>
             
             <div class="row">
                 <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body text-center">
+                    <div class="card carrito-card">
+                        <div class="card-body carrito-vacio">
                             <h5>Tu carrito está vacío</h5>
                             <p>No hay elementos en tu carrito de compras.</p>
                             <a href="planes.html" class="boton">
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card carrito-resumen">
                         <div class="card-header">
                             <h5>Resumen de Compra</h5>
                         </div>
@@ -93,16 +93,19 @@
                                 <span>$0</span>
                             </div>
                             <div class="d-flex justify-content-between mb-2">
-                                <span>Costo de servicio web:</span>
+                                <span>Costo de servicio:</span>
                                 <span>$0</span>
                             </div>
-                            <hr>
+                            <hr style="border-color: var(--color-letras);">
                             <div class="d-flex justify-content-between fw-bold">
                                 <span>Total:</span>
                                 <span>$0</span>
                             </div>
                             <button class="boton w-100 mt-3" disabled>
                                 Finalizar Compra
+                            </button>
+                            <button class="btn btn-outline-danger w-100 mt-2" onclick="vaciarCarrito()" style="display: none;" id="btnVaciarCarrito">
+                                Vaciar Carrito
                             </button>
                         </div>
                     </div>
