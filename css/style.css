@@ -155,29 +155,125 @@ section {
 .planes-card {
     background-color: var(--color-fondo);
     border: 2px solid var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.planes-card:hover {
+    border-color: var(--color-botones);
+    box-shadow: 0 5px 15px rgba(245, 51, 155, 0.2);
 }
 
 .planes-card-popular {
     background-color: var(--color-fondo);
     border: 2px solid var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.planes-card-popular:hover {
+    box-shadow: 0 8px 20px rgba(245, 51, 155, 0.3);
 }
 
 .planes-card-header {
     background-color: var(--color-fondo);
     border-bottom: 1px solid var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .planes-card-header-popular {
     background-color: var(--color-fondo);
     border-bottom: 1px solid var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .planes-text {
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.planes-card:hover .planes-text {
+    color: var(--color-botones);
 }
 
 .planes-text-popular {
     color: var(--color-botones);
+    position: relative;
+}
+
+/* Efectos simples en los botones */
+.planes-card .boton,
+.planes-card-popular .boton {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.planes-card .boton:hover,
+.planes-card-popular .boton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(245, 51, 155, 0.3);
+}
+
+/* Animación de entrada simple */
+.planes-card,
+.planes-card-popular {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideIn 0.6s ease forwards;
+}
+
+.planes-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.planes-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.planes-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título con entrada simple */
+.planes-text:first-child {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto sutil en el plan popular */
+.planes-card-popular::after {
+    content: 'POPULAR';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-botones);
+    background: rgba(245, 51, 155, 0.1);
+    padding: 2px 6px;
+    border-radius: 8px;
+    opacity: 0.8;
 }
 
 /* Estilos para la página del carrito */
