@@ -459,3 +459,230 @@ section {
     border-color: #dc3545;
     color: #dc3545;
 }
+
+/* Estilos para páginas de miembros - desde rama peru */
+
+/* presentacion */
+.presentacion{
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.contPresentacion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+.textPresentacion{
+    flex: 1;
+    margin-left: 1rem;
+}
+.textPresentacion h1{
+    font-size: 4rem;
+    margin-bottom: .5rem;
+    font-weight: 700px;
+    color: #f5339b;
+}
+.textPresentacion h2{
+    font-size: 3.5rem;
+    margin-bottom: 2.0rem;
+    font-weight: 600px;
+}
+.textPresentacion p{
+    margin-bottom: 4.5rem;
+    font-size: 1.5rem;
+    max-width: 800px;
+    color: white;
+}
+.fotoPresentacion{
+    flex:1;
+    display: flex;
+    justify-content: flex-end;
+}
+.fotoPresentacion img{
+    width: 425px;
+    height: 440px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--color-botones);
+    box-shadow: 0 0 25px rgba(243, 241, 241, 0.308);
+}
+.fotoPresentacion img:hover{
+    transform: scale(1.03);
+    box-shadow: 0 0 30px;
+}
+.linkSocial{
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.linkSocial a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+/* experiencia */
+.titulo{
+    font-size: 4rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+.titulo::after{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-botones);
+}
+.linea{
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.linea:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 2px;
+    height: 100%;
+    background-color: #333;
+}
+.item{
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 50px;
+}
+.item:before{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f5339b;
+    z-index: 1;
+}
+.contenido{
+    background-color: #17213a76;
+    padding: 1.9rem;
+    border-radius: 10px;
+    border-left: 3px solid var(--color-botones);
+}
+.fecha{
+    display: inline-block;
+    padding: .3rem .8rem;
+    background-color: #f64ea895;
+    color: var(--color-botones);
+    border-radius: 5px;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+.contenido h3{
+    margin-bottom: .5rem;
+    font-size: 2.3rem;
+    color: #00bbff;
+}
+.contenido h4{
+    color: #00bbffa7;
+    margin-bottom: 1rem;
+    font-size: 1.9rem;
+    font-weight: 500;
+}
+.contenido p{
+    color: white;
+    font-size: 1.4rem;
+}
+.skills{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: .8rem;
+}
+.skills li{
+    font-size: 1.2rem;
+    padding: .4rem .9rem;
+    border-radius: 10px;
+}
+
+/* proyectos */
+.contenedorProyecto{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.cardProyecto{
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: var(--color-botones);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.cardProyecto:hover{
+    transform: translate(-3px);
+    box-shadow: 0 0 30px;
+}
+.imagenProyecto{
+    overflow: hidden;
+}
+.imagenProyecto img{
+    transition: var(--color-botones);
+    width: 100%;
+}
+.cardProyecto:hover .imagenProyecto img{
+    transform: scale(1.05);
+}
+.infoProyecto{
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.infoProyecto h3{
+    margin-bottom: .8rem;
+    font-size: 2rem;
+}
+.infoProyecto p{
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    flex-grow: 1;
+}
+.tecProyecto{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+.tecProyecto span{
+    font-size: 1.2rem;
+    padding: .2rem .6rem;
+    background-color: #333;
+    border-radius: 20px;
+}
+.linkProyectos{
+    display: flex;
+    gap: 1rem;
+}
+.linkProyectos a{
+    font-size: 1rem;
+    color: var(--color-botones);
+    transition: var(--color-letras);
+    text-decoration: none;
+}
+.linkProyectos a:hover{
+    color: var(--color-fondo);
+}
