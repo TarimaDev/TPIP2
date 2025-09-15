@@ -10,6 +10,9 @@ let datosPlanes = null;
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Página cargada correctamente');
     
+    // Configurar tema
+    initTheme();
+    
     // Cargar datos de los planes desde el archivo JSON
     cargarDatosPlanes().then(() => {
         // Verificar en qué página estamos para inicializar las funciones correspondientes
@@ -27,7 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // Función para cargar datos desde el archivo JSON
 async function cargarDatosPlanes() {
     try {
-        const response = await fetch('../mock/data.json');
+    // Ajustar ruta según ubicación
+    const isInPagesFolder = window.location.pathname.includes('/pages/');
+    const dataPath = isInPagesFolder ? '../mock/data.json' : 'mock/data.json';
+        
+        const response = await fetch(dataPath);
         const data = await response.json();
         datosPlanes = data;
         console.log('Datos de planes cargados:', datosPlanes);
@@ -261,9 +268,9 @@ function actualizarContadorCarrito() {
     const contador = document.querySelector('.navbar .nav-link[href*="carrito"]');
     if (contador) {
         if (carrito.length > 0) {
-            contador.innerHTML = `🛒 (${carrito.length})`;
+            contador.innerHTML = `🛒 Carrito (${carrito.length})`;
         } else {
-            contador.innerHTML = '🛒';
+            contador.innerHTML = '🛒 Carrito';
         }
     }
 }
@@ -286,6 +293,85 @@ function mostrarMensaje(mensaje, tipo) {
             mensajeDiv.parentNode.removeChild(mensajeDiv);
         }
     }, 3000);
+}
+
+// Sistema de temas
+
+// Función para inicializar el sistema de temas
+function initTheme() {
+    // Obtener el tema guardado en localStorage o usar 'dark' por defecto
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    // Aplicar el tema guardado
+    applyTheme(savedTheme);
+    
+    // Configurar el evento del botón toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+}
+
+// Función para cambiar entre temas
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    applyTheme(newTheme);
+    
+    // Guardar la preferencia en localStorage
+    localStorage.setItem('theme', newTheme);
+}
+
+// Función para aplicar un tema específico
+function applyTheme(theme) {
+    // Aplicar el atributo data-theme al documento
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Actualizar el ícono del botón toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        const iconMoon = themeToggle.querySelector('.icon-moon');
+        const iconSun = themeToggle.querySelector('.icon-sun');
+        
+        if (theme === 'light') {
+            iconMoon.style.display = 'none';
+            iconSun.style.display = 'inline';
+        } else {
+            iconMoon.style.display = 'inline';
+            iconSun.style.display = 'none';
+        }
+    }
+    
+    // Actualizar el título de la página para indicar el modo actual
+    updatePageTitle(theme);
+}
+
+// Función para actualizar el título de la página
+function updatePageTitle(theme) {
+    const currentTitle = document.title;
+    const baseTitle = currentTitle.replace(' 🌙', '').replace(' ☀️', '');
+    
+    if (theme === 'light') {
+        document.title = baseTitle + ' ☀️';
+    } else {
+        document.title = baseTitle + ' 🌙';
+    }
+}
+
+// Función para obtener el tema actual
+function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'dark';
+}
+
+// Función para verificar si el tema es oscuro
+function isDarkTheme() {
+    return getCurrentTheme() === 'dark';
+}
+
+// Función para verificar si el tema es claro
+function isLightTheme() {
+    return getCurrentTheme() === 'light';
 }
 
 // Función principal de inicialización

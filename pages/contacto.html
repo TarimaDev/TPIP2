@@ -40,13 +40,13 @@
             </li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacto.html">Contacto</a></li>
           </ul>
-          <div class="d-flex align-items-center me-3">
-            <a class="nav-link" href="carrito.html">🛒</a>
+          <div class="d-flex align-items-center">
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+              <span class="icon-moon">🌙</span>
+              <span class="icon-sun">☀️</span>
+            </button>
+            <a class="nav-link ms-3" href="carrito.html">🛒 Carrito</a>
           </div>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-          </form>
         </div>
       </div>
     </nav>
@@ -60,52 +60,99 @@
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="nombre" class="form-label planes-text">Nombre y Apellido</label>
-              <input type="text" class="form-control" id="nombre" required>
-              <div class="invalid-feedback">Por favor ingrese su nonbre.</div>
+              <div class="input-group">
+                <input type="text" class="form-control" id="nombre" required>
+                <span class="input-group-text" id="nombre-icon">👤</span>
+              </div>
+              <div class="invalid-feedback">Por favor ingrese su nombre.</div>
+              <div class="valid-feedback">¡Perfecto!</div>
             </div>
             <div class="col-md-6">
-              <label for="email" class="form-label planes-text">Correo electronico</label>
-              <input type="email" class="form-control" id="email" required>
-              <div class="invalid-feedback">Ingrese un email valido.</div>
+              <label for="email" class="form-label planes-text">Correo electrónico</label>
+              <div class="input-group">
+                <input type="email" class="form-control" id="email" required>
+                <span class="input-group-text" id="email-icon">📧</span>
+              </div>
+              <div class="invalid-feedback">Ingrese un email válido.</div>
+              <div class="valid-feedback">¡Email válido!</div>
             </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="telefono" class="form-label planes-text">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono" pattern="[0-9]{10}" required>
+              <div class="input-group">
+                <input type="tel" class="form-control" id="telefono" pattern="[0-9]{10}" required>
+                <span class="input-group-text" id="telefono-icon">📞</span>
+              </div>
               <div class="invalid-feedback">Ingrese un teléfono válido de 10 dígitos.</div>
+              <div class="valid-feedback">¡Teléfono válido!</div>
             </div>
             <div class="col-md-6">
               <label for="fecha" class="form-label planes-text">Fecha de contacto</label>
-              <input type="date" class="form-control" id="fecha" required>
+              <div class="input-group">
+                <input type="date" class="form-control" id="fecha" required>
+                <span class="input-group-text" id="fecha-icon">📅</span>
+              </div>
               <div class="invalid-feedback">Seleccione una fecha.</div>
+              <div class="valid-feedback">¡Fecha seleccionada!</div>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="motivo" class="form-label planes-text">Motivo de consulta</label>
-            <select id="motivo" class="form-select" required>
-              <option value="">Seleccione...</option>
-              <option value="planes">Planes y precios</option>
-              <option value="soporte">Soporte tecnico</option>
-              <option value="otros">Otros</option>
-            </select>
+            <div class="input-group">
+              <select id="motivo" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <option value="planes">Planes y precios</option>
+                <option value="soporte">Soporte técnico</option>
+                <option value="otros">Otros</option>
+              </select>
+              <span class="input-group-text" id="motivo-icon">🎯</span>
+            </div>
             <div class="invalid-feedback">Seleccione un motivo.</div>
+            <div class="valid-feedback">¡Motivo seleccionado!</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label planes-text">Preferencia de contacto <span id="preferencia-icon">📋</span></label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferencia" id="preferencia-email" value="email" required>
+              <label class="form-check-label planes-text" for="preferencia-email">
+                📧 Correo electrónico
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferencia" id="preferencia-telefono" value="telefono" required>
+              <label class="form-check-label planes-text" for="preferencia-telefono">
+                📞 Teléfono
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferencia" id="preferencia-ambos" value="ambos" required>
+              <label class="form-check-label planes-text" for="preferencia-ambos">
+                🔄 Ambos
+              </label>
+            </div>
+            <div class="invalid-feedback">Seleccione una preferencia de contacto.</div>
+            <div class="valid-feedback">¡Preferencia seleccionada!</div>
           </div>
 
           <div class="mb-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="acepto" required>
-              <label class="form-check-label planes-text" for="acepto">Acepto recibir información</label>
+              <label class="form-check-label planes-text" for="acepto">✅ Acepto recibir información</label>
               <div class="invalid-feedback d-block">Debe aceptar para continuar.</div>
+              <div class="valid-feedback">¡Aceptado!</div>
             </div>
           </div>
 
           <div class="mb-3">
-            <label for="mensaje" class="form-label planes-text">Mensaje</label>
-            <textarea class="form-control" id="mensaje" rows="4" required></textarea>
-            <div class="invalid-feedback">Por favor escriba su mensaje.</div>
+            <label for="mensaje" class="form-label planes-text">Mensaje (opcional)</label>
+            <div class="input-group">
+              <textarea class="form-control" id="mensaje" rows="4"></textarea>
+              <span class="input-group-text" id="mensaje-icon">💬</span>
+            </div>
           </div>
 
           <button type="submit" class="boton">Enviar</button>
@@ -127,24 +174,230 @@
 (() => {
   'use strict';
   const form = document.getElementById('contactForm');
+  
+  // Campos del formulario
+  const campos = {
+    nombre: document.getElementById('nombre'),
+    email: document.getElementById('email'),
+    telefono: document.getElementById('telefono'),
+    fecha: document.getElementById('fecha'),
+    motivo: document.getElementById('motivo'),
+    preferencia: document.querySelectorAll('input[name="preferencia"]'),
+    acepto: document.getElementById('acepto'),
+    mensaje: document.getElementById('mensaje')
+  };
 
+  // Iconos de validación
+  const iconos = {
+    nombre: document.getElementById('nombre-icon'),
+    email: document.getElementById('email-icon'),
+    telefono: document.getElementById('telefono-icon'),
+    fecha: document.getElementById('fecha-icon'),
+    motivo: document.getElementById('motivo-icon'),
+    preferencia: document.getElementById('preferencia-icon'),
+    mensaje: document.getElementById('mensaje-icon')
+  };
+
+  // Estados de campos
+  const estados = {
+    nombre: false,
+    email: false,
+    telefono: false,
+    fecha: false,
+    motivo: false,
+    preferencia: false,
+    acepto: false,
+    mensaje: false
+  };
+
+  // Actualizar icono de validación
+  function actualizarIcono(campo, esValido) {
+    const icono = iconos[campo];
+    if (icono) {
+      if (esValido) {
+        icono.textContent = '✅';
+        icono.style.color = '#28a745';
+      } else {
+        icono.textContent = '❌';
+        icono.style.color = '#dc3545';
+      }
+    }
+  }
+
+  // Función para validar nombre
+  function validarNombre() {
+    const valor = campos.nombre.value.trim();
+    const esValido = valor.length >= 2 && /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(valor);
+    estados.nombre = esValido;
+    actualizarIcono('nombre', esValido);
+    return esValido;
+  }
+
+  // Función para validar email
+  function validarEmail() {
+    const valor = campos.email.value.trim();
+    const esValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
+    estados.email = esValido;
+    actualizarIcono('email', esValido);
+    return esValido;
+  }
+
+  // Función para validar teléfono
+  function validarTelefono() {
+    const valor = campos.telefono.value.trim();
+    const esValido = /^[0-9]{10}$/.test(valor);
+    estados.telefono = esValido;
+    actualizarIcono('telefono', esValido);
+    return esValido;
+  }
+
+  // Función para validar fecha
+  function validarFecha() {
+    const valor = campos.fecha.value;
+    if (!valor) {
+      estados.fecha = false;
+      actualizarIcono('fecha', false);
+      return false;
+    }
+    
+    const hoy = new Date();
+    const fechaSeleccionada = new Date(valor);
+    
+    // Normalizar fechas para comparar solo el día
+    hoy.setHours(0, 0, 0, 0);
+    fechaSeleccionada.setHours(0, 0, 0, 0);
+    
+    const esValido = fechaSeleccionada >= hoy;
+    estados.fecha = esValido;
+    actualizarIcono('fecha', esValido);
+    return esValido;
+  }
+
+  // Función para validar motivo
+  function validarMotivo() {
+    const esValido = campos.motivo.value !== '';
+    estados.motivo = esValido;
+    actualizarIcono('motivo', esValido);
+    return esValido;
+  }
+
+  // Función para validar preferencia
+  function validarPreferencia() {
+    const esValido = document.querySelector('input[name="preferencia"]:checked') !== null;
+    estados.preferencia = esValido;
+    actualizarIcono('preferencia', esValido);
+    return esValido;
+  }
+
+  // Función para validar acepto
+  function validarAcepto() {
+    const esValido = campos.acepto.checked;
+    estados.acepto = esValido;
+    return esValido;
+  }
+
+  // Función para validar mensaje (opcional)
+  function validarMensaje() {
+    // El mensaje es opcional, no requiere validación
+    estados.mensaje = true;
+    return true;
+  }
+
+  // Validación cruzada entre campos
+  function validacionCruzada() {
+    const emailValido = validarEmail();
+    const preferenciaValida = validarPreferencia();
+    
+    if (emailValido && preferenciaValida) {
+      const preferenciaSeleccionada = document.querySelector('input[name="preferencia"]:checked').value;
+      const email = campos.email.value.trim();
+      
+      if (preferenciaSeleccionada === 'email' || preferenciaSeleccionada === 'ambos') {
+        // Verificar que el email sea válido para notificaciones por correo
+        if (!emailValido) {
+          mostrarMensajeContextual('email', 'El email debe ser válido para recibir notificaciones por correo', 'warning');
+        }
+      }
+    }
+  }
+
+  // Mostrar mensaje de validación
+  function mostrarMensajeContextual(campo, mensaje, tipo) {
+    const campoElement = campos[campo];
+    const feedback = campoElement.parentNode.querySelector('.invalid-feedback') || 
+                    campoElement.parentNode.querySelector('.valid-feedback');
+    
+    if (feedback) {
+      feedback.textContent = mensaje;
+      feedback.className = `invalid-feedback ${tipo === 'warning' ? 'text-warning' : ''}`;
+    }
+  }
+
+  // Validación en tiempo real
+  campos.nombre.addEventListener('input', validarNombre);
+  campos.nombre.addEventListener('blur', validarNombre);
+  
+  campos.email.addEventListener('input', () => {
+    validarEmail();
+    validacionCruzada();
+  });
+  campos.email.addEventListener('blur', () => {
+    validarEmail();
+    validacionCruzada();
+  });
+  
+  campos.telefono.addEventListener('input', validarTelefono);
+  campos.telefono.addEventListener('blur', validarTelefono);
+  
+  campos.fecha.addEventListener('change', validarFecha);
+  campos.fecha.addEventListener('blur', validarFecha);
+  
+  campos.motivo.addEventListener('change', validarMotivo);
+  campos.motivo.addEventListener('blur', validarMotivo);
+  
+  campos.preferencia.forEach(radio => {
+    radio.addEventListener('change', () => {
+      validarPreferencia();
+      validacionCruzada();
+    });
+  });
+  
+  campos.acepto.addEventListener('change', validarAcepto);
+
+  // Envío del formulario
   form.addEventListener('submit', async event => {
     event.preventDefault();
-
-    if (!form.checkValidity()) {
-      event.stopPropagation();
+    
+    // Validar todos los campos
+    const validaciones = [
+      validarNombre(),
+      validarEmail(),
+      validarTelefono(),
+      validarFecha(),
+      validarMotivo(),
+      validarPreferencia(),
+      validarAcepto(),
+      validarMensaje()
+    ];
+    
+    const esValido = validaciones.every(valido => valido);
+    
+    if (!esValido) {
       form.classList.add('was-validated');
+      mostrarMensajeContextual('general', 'Por favor complete todos los campos correctamente', 'error');
       return;
     }
+
+    // Datos del formulario
     const data = {
-      nombre: document.getElementById('nombre').value,
-      email: document.getElementById('email').value,
-      telefono: document.getElementById('telefono').value,
-      fecha: document.getElementById('fecha').value,
-      motivo: document.getElementById('motivo').value,
-      preferencia: document.querySelector('input[name="preferencia"]:checked')?.value,
-      aceptaInfo: document.getElementById('acepto').checked,
-      mensaje: document.getElementById('mensaje').value
+      nombre: campos.nombre.value.trim(),
+      email: campos.email.value.trim(),
+      telefono: campos.telefono.value.trim(),
+      fecha: campos.fecha.value,
+      motivo: campos.motivo.value,
+      preferencia: document.querySelector('input[name="preferencia"]:checked').value,
+      aceptaInfo: campos.acepto.checked,
+      mensaje: campos.mensaje.value.trim()
     };
 
     try {
@@ -155,15 +408,28 @@
       });
 
       if (response.ok) {
-        alert("✅ Formulario enviado correctamente (simulado en data.json).");
+        mostrarMensajeContextual('general', '✅ Formulario enviado correctamente (simulado en data.json).', 'success');
         form.reset();
         form.classList.remove('was-validated');
+        
+        // Limpiar iconos
+        Object.keys(iconos).forEach(campo => {
+          if (iconos[campo] && campo !== 'mensaje') {
+            iconos[campo].textContent = iconos[campo].textContent.replace(/[✅❌]/, '');
+            iconos[campo].style.color = '';
+          }
+        });
+        
+        // Limpiar estados
+        Object.keys(estados).forEach(campo => {
+          estados[campo] = false;
+        });
       } else {
-        alert("❌ Error al enviar (simulación).");
+        mostrarMensajeContextual('general', '❌ Error al enviar (simulación).', 'error');
       }
     } catch (error) {
       console.error("Error en la simulación:", error);
-      alert("❌ No se pudo simular el envío.");
+      mostrarMensajeContextual('general', '❌ No se pudo simular el envío.', 'error');
     }
   });
 })();
