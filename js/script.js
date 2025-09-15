@@ -315,13 +315,20 @@ function initTheme() {
 // Función para cambiar entre temas
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    let newTheme;
+
+    if (currentTheme === 'light') {
+        newTheme = 'dark';
+    } else {
+        newTheme = 'light';
+    }
     
     applyTheme(newTheme);
     
     // Guardar la preferencia en localStorage
     localStorage.setItem('theme', newTheme);
 }
+
 
 // Función para aplicar un tema específico
 function applyTheme(theme) {
