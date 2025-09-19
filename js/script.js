@@ -10,26 +10,33 @@ let datosPlanes = null;
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Página cargada correctamente');
     
+    // Configurar tema
+    IniciarTema();
+    
     // Cargar datos de los planes desde el archivo JSON
-    cargarDatosPlanes().then(() => {
+    CargarDatosPlanes().then(() => {
         // Verificar en qué página estamos para inicializar las funciones correspondientes
         if (window.location.pathname.includes('planes.html')) {
-            initPlanes();
+            IniciarPlanes();
         } else if (window.location.pathname.includes('carrito.html')) {
-            initCarrito();
+            IniciarCarrito();
         }
         
         // Actualizar el contador del carrito en la barra de navegación
-        actualizarContadorCarrito();
+        ActualizarContadorCarrito();
     });
 });
 
 // Función para cargar datos desde el archivo JSON
-async function cargarDatosPlanes() {
+async function CargarDatosPlanes() {
     try {
-        const response = await fetch('../mock/data.json');
-        const data = await response.json();
-        datosPlanes = data;
+    // Ajustar ruta según ubicación
+    const estaEnCarpetaPages = window.location.pathname.includes('/pages/');
+    const rutaDatos = estaEnCarpetaPages ? '../mock/data.json' : 'mock/data.json';
+        
+        const respuesta = await fetch(rutaDatos);
+        const datos = await respuesta.json();
+        datosPlanes = datos;
         console.log('Datos de planes cargados:', datosPlanes);
     } catch (error) {
         console.error('Error al cargar los datos de planes:', error);
@@ -64,27 +71,27 @@ async function cargarDatosPlanes() {
 
 // Funciones para manejar los planes
 
-function initPlanes() {
+function IniciarPlanes() {
     const botonesSeleccionar = document.querySelectorAll('.planes-card .boton, .planes-card-popular .boton');
     
-    botonesSeleccionar.forEach((boton, index) => {
+    botonesSeleccionar.forEach((boton, indice) => {
         boton.addEventListener('click', function() {
-            const plan = obtenerDatosPlanDesdeJSON(index);
-            agregarAlCarrito(plan);
-            mostrarMensaje('Plan agregado al carrito', 'success');
+            const plan = ObtenerDatosPlanDesdeJSON(indice);
+            AgregarAlCarrito(plan);
+            MostrarMensaje('Plan agregado al carrito', 'success');
         });
     });
 }
 
-function obtenerDatosPlanDesdeJSON(index) {
+function ObtenerDatosPlanDesdeJSON(indice) {
     if (!datosPlanes || !datosPlanes.planes) {
         console.error('Datos de planes no disponibles');
         return null;
     }
     
-    const plan = datosPlanes.planes[index];
+    const plan = datosPlanes.planes[indice];
     if (!plan) {
-        console.error('Plan no encontrado en el índice:', index);
+        console.error('Plan no encontrado en el índice:', indice);
         return null;
     }
     
@@ -98,12 +105,12 @@ function obtenerDatosPlanDesdeJSON(index) {
 
 // Funciones para el carrito
 
-function initCarrito() {
-    mostrarCarrito();
-    configurarEventosCarrito();
+function IniciarCarrito() {
+    MostrarCarrito();
+    ConfigurarEventosCarrito();
 }
 
-function mostrarCarrito() {
+function MostrarCarrito() {
     const contenedorCarrito = document.querySelector('.col-md-8 .card .card-body');
     const btnVaciarCarrito = document.getElementById('btnVaciarCarrito');
     
@@ -123,7 +130,7 @@ function mostrarCarrito() {
     } else {
         let html = '<h5 style="color: var(--color-letras); margin-bottom: 1.5rem;">Productos en tu carrito</h5>';
         
-        carrito.forEach((item, index) => {
+        carrito.forEach((item, indice) => {
             html += `
                 <div class="card carrito-item mb-3">
                     <div class="card-body">
@@ -136,7 +143,7 @@ function mostrarCarrito() {
                                 <span class="fw-bold" style="color: var(--color-botones);">$${item.precio}/mes</span>
                             </div>
                             <div class="col-md-3 text-end">
-                                <button class="btn btn-sm btn-outline-danger" onclick="eliminarDelCarrito(${index})">
+                                <button class="btn btn-sm btn-outline-danger" onclick="EliminarDelCarrito(${indice})">
                                     Eliminar
                                 </button>
                             </div>
@@ -152,19 +159,19 @@ function mostrarCarrito() {
         }
     }
     
-    actualizarResumenCompra();
+    ActualizarResumenCompra();
 }
 
-function configurarEventosCarrito() {
+function ConfigurarEventosCarrito() {
     const botonFinalizar = document.querySelector('.col-md-4 .boton');
     
     if (carrito.length > 0) {
         botonFinalizar.disabled = false;
-        botonFinalizar.addEventListener('click', finalizarCompra);
+        botonFinalizar.addEventListener('click', FinalizarCompra);
     }
 }
 
-function actualizarResumenCompra() {
+function ActualizarResumenCompra() {
     // Calcular el subtotal sumando todos los precios
     const subtotal = carrito.reduce((total, item) => total + item.precio, 0);
     
@@ -188,87 +195,87 @@ function actualizarResumenCompra() {
 
 // Funciones para manejar el carrito
 
-function agregarAlCarrito(plan) {
+function AgregarAlCarrito(plan) {
     // Verificar si el plan ya está en el carrito
     const planExistente = carrito.find(item => item.id === plan.id);
     
     if (planExistente) {
-        mostrarMensaje('Este plan ya está en tu carrito', 'warning');
+        MostrarMensaje('Este plan ya está en tu carrito', 'warning');
         return;
     }
     
     carrito.push(plan);
-    guardarCarrito();
-    actualizarContadorCarrito();
+    GuardarCarrito();
+    ActualizarContadorCarrito();
     
     // Si estamos en la página del carrito, actualizar el resumen
     if (window.location.pathname.includes('carrito.html')) {
-        actualizarResumenCompra();
+        ActualizarResumenCompra();
     }
 }
 
-function eliminarDelCarrito(index) {
-    carrito.splice(index, 1);
-    guardarCarrito();
-    mostrarCarrito();
-    actualizarContadorCarrito();
-    actualizarResumenCompra();
+function EliminarDelCarrito(indice) {
+    carrito.splice(indice, 1);
+    GuardarCarrito();
+    MostrarCarrito();
+    ActualizarContadorCarrito();
+    ActualizarResumenCompra();
 }
 
-function vaciarCarrito() {
+function VaciarCarrito() {
     if (carrito.length === 0) {
-        mostrarMensaje('El carrito ya está vacío', 'warning');
+        MostrarMensaje('El carrito ya está vacío', 'warning');
         return;
     }
     
     if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
         carrito = [];
-        guardarCarrito();
-        mostrarCarrito();
-        actualizarContadorCarrito();
-        actualizarResumenCompra();
-        mostrarMensaje('Carrito vaciado correctamente', 'success');
+        GuardarCarrito();
+        MostrarCarrito();
+        ActualizarContadorCarrito();
+        ActualizarResumenCompra();
+        MostrarMensaje('Carrito vaciado correctamente', 'success');
     }
 }
 
-function finalizarCompra() {
+function FinalizarCompra() {
     if (carrito.length === 0) {
-        mostrarMensaje('Tu carrito está vacío', 'warning');
+        MostrarMensaje('Tu carrito está vacío', 'warning');
         return;
     }
     
-    mostrarMensaje('¡Compra realizada con éxito!', 'success');
+    MostrarMensaje('¡Compra realizada con éxito!', 'success');
     
     // Limpiar el carrito directamente sin confirmación para simular la compra
     setTimeout(() => {
         carrito = [];
-        guardarCarrito();
-        mostrarCarrito();
-        actualizarContadorCarrito();
-        actualizarResumenCompra();
+        GuardarCarrito();
+        MostrarCarrito();
+        ActualizarContadorCarrito();
+        ActualizarResumenCompra();
     }, 2000);
 }
 
 // Funciones auxiliares
 
-function guardarCarrito() {
+function GuardarCarrito() {
     // Guardar el carrito en el localStorage para que persista
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-function actualizarContadorCarrito() {
+function ActualizarContadorCarrito() {
     // Actualizar el ícono del carrito en la navbar con la cantidad
     const contador = document.querySelector('.navbar .nav-link[href*="carrito"]');
     if (contador) {
         if (carrito.length > 0) {
-            contador.innerHTML = `🛒 (${carrito.length})`;
+            contador.innerHTML = `🛒 Carrito (${carrito.length})`;
         } else {
-            contador.innerHTML = '🛒';
+            contador.innerHTML = '🛒 Carrito';
         }
     }
 }
 
-function mostrarMensaje(mensaje, tipo) {
+function MostrarMensaje(mensaje, tipo) {
     // Crear y mostrar un mensaje de notificación
     const mensajeDiv = document.createElement('div');
     mensajeDiv.className = `alert alert-${tipo === 'success' ? 'success' : tipo === 'warning' ? 'warning' : 'danger'} alert-dismissible fade show position-fixed`;
@@ -286,6 +293,92 @@ function mostrarMensaje(mensaje, tipo) {
             mensajeDiv.parentNode.removeChild(mensajeDiv);
         }
     }, 3000);
+}
+
+// Sistema de temas
+
+// Función para inicializar el sistema de temas
+function IniciarTema() {
+    // Obtener el tema guardado en localStorage o usar 'dark' por defecto
+    const temaGuardado = localStorage.getItem('theme') || 'dark';
+    
+    // Aplicar el tema guardado
+    AplicarTema(temaGuardado);
+    
+    // Configurar el evento del botón toggle
+    const botonToggle = document.getElementById('themeToggle');
+    if (botonToggle) {
+        botonToggle.addEventListener('click', CambiarTema);
+    }
+}
+
+// Función para cambiar entre temas
+function CambiarTema() {
+    const temaActual = document.documentElement.getAttribute('data-theme');
+    let temaNuevo;
+
+    if (temaActual === 'light') {
+        temaNuevo = 'dark';
+    } else {
+        temaNuevo = 'light';
+    }
+    
+    AplicarTema(temaNuevo);
+    
+    // Guardar la preferencia en localStorage
+    localStorage.setItem('theme', temaNuevo);
+}
+
+
+// Función para aplicar un tema específico
+function AplicarTema(tema) {
+    // Aplicar el atributo data-theme al documento
+    document.documentElement.setAttribute('data-theme', tema);
+    
+    // Actualizar el ícono del botón toggle
+    const botonToggle = document.getElementById('themeToggle');
+    if (botonToggle) {
+        const iconoLuna = botonToggle.querySelector('.icon-moon');
+        const iconoSol = botonToggle.querySelector('.icon-sun');
+        
+        if (tema === 'light') {
+            iconoLuna.style.display = 'none';
+            iconoSol.style.display = 'inline';
+        } else {
+            iconoLuna.style.display = 'inline';
+            iconoSol.style.display = 'none';
+        }
+    }
+    
+    // Actualizar el título de la página para indicar el modo actual
+    ActualizarTituloPagina(tema);
+}
+
+// Función para actualizar el título de la página
+function ActualizarTituloPagina(tema) {
+    const tituloActual = document.title;
+    const tituloBase = tituloActual.replace(' 🌙', '').replace(' ☀️', '');
+    
+    if (tema === 'light') {
+        document.title = tituloBase + ' ☀️';
+    } else {
+        document.title = tituloBase + ' 🌙';
+    }
+}
+
+// Función para obtener el tema actual
+function ObtTemaActual() {
+    return document.documentElement.getAttribute('data-theme') || 'dark';
+}
+
+// Función para verificar si el tema es oscuro
+function TemaOscuro() {
+    return ObtTemaActual() === 'dark';
+}
+
+// Función para verificar si el tema es claro
+function TemaClaro() {
+    return ObtTemaActual() === 'light';
 }
 
 // Función principal de inicialización

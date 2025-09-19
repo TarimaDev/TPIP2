@@ -48,9 +48,13 @@
                             <a class="nav-link" href="contacto.html">Contacto</a>
                         </li>
                     </ul>
-                    <div class="d-flex align-items-center me-3">
-                        <a class="nav-link active" aria-current="page" href="carrito.html">
-                            🛒
+                    <div class="d-flex align-items-center">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                            <span class="icon-moon">🌙</span>
+                            <span class="icon-sun">☀️</span>
+                        </button>
+                        <a class="nav-link active ms-3" aria-current="page" href="carrito.html">
+                            🛒 Carrito
                         </a>
                     </div>
                 </div>
@@ -97,7 +101,7 @@
                             <button class="boton w-100 mt-3" disabled>
                                 Finalizar Compra
                             </button>
-                            <button class="btn btn-outline-danger w-100 mt-2" onclick="vaciarCarrito()" style="display: none;" id="btnVaciarCarrito">
+                            <button class="btn btn-outline-danger w-100 mt-2" onclick="VaciarCarrito()" style="display: none;" id="btnVaciarCarrito">
                                 Vaciar Carrito
                             </button>
                         </div>
@@ -108,7 +112,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 - Todos los derechos reservados</p>
+        <p>&copy; 2025 - Todos los derechos reservados</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
