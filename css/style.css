@@ -18,7 +18,7 @@
 body {
     font-family: "Teko", sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #ffffff;
     background-color: var(--color-fondo);
 }
 
@@ -92,8 +92,37 @@ footer {
     border: 1px solid rgb(187, 187, 187);
 }
 
+.dropdown-item{
+    color: white;
+}
+
 .dropdown-item:hover {
     background-color: var(--color-fondo);
+}
+
+.titulosInicio {
+    font-size: 80px;
+}
+
+.descripcion{
+    font-size: 50px;
+}
+
+.imagenInicio{
+    max-width: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 100px;
+    margin-bottom: 30px;
+    object-fit: cover;
+    border: 5px solid var(--color-letras);
+}
+
+.imagenProyecto{
+    max-width: 200px;
+    aspect-ratio: 1/1;
+    border-radius: 20px;
+    margin: 30px;
+    object-fit: cover;
 }
 
 /* Estilos para botones */
@@ -101,6 +130,19 @@ footer {
     color: white;
     background-color: var(--color-botones);
     border: none;
+    padding: 10px 50px;
+    border-radius: 50px;
+    transition: 0.5s ease;
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.perfilBoton{
+    color: white;
+    background-color: var(--color-botones);
+    border: none;
+    text-decoration: none;
     padding: 10px 50px;
     border-radius: 50px;
     transition: 0.5s ease;
