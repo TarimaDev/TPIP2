@@ -18,7 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-end">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html">Proyecto</a>
+                <a class="navbar-brand" href="index.html">LCDLT</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -27,39 +27,36 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link not-active" href="#">Precios</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle not-active" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Nosotros
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item not-active" href="#">Matías Sione</a></li>
-                                <li><a class="dropdown-item not-active" href="#">Gabriel Dino</a></li>
-                                <li><a class="dropdown-item not-active" href="#">Jeremías Paletta</a></li>
-                                <li><a class="dropdown-item not-active" href="#">Marco Ayquipa</a></li>
-                            </ul>
+                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="pages/planes.html">Planes</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Nosotros
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="pages/matiSione.html">Matías Sione</a></li>
+                                <li><a class="dropdown-item" href="pages/gabrielDino.html">Gabriel Dino</a></li>
+                                <li><a class="dropdown-item" href="pages/JerePaletta.html">Jeremías Paletta</a></li>
+                                <li><a class="dropdown-item" href="pages/marcoAyquipa.html">Marco Ayquipa</a></li>
+                            </ul>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" href="pages/contacto.html">Contacto</a>
                         </li>
                     </ul>
-                    <div class="d-flex align-items-center me-3">
-                        <a class="nav-link" href="pages/carrito.html">
-                            🛒
+                    <div class="d-flex align-items-center">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+                            <span class="icon-moon">🌙</span>
+                            <span class="icon-sun">☀️</span>
+                        </button>
+                        <a class="nav-link ms-3" href="pages/carrito.html">
+                            🛒 Carrito
                         </a>
                     </div>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </nav>
@@ -67,111 +64,167 @@
 
     <main>
         <section>
-            <div class="imagenes container">
-                <div id="carouselExampleCaptions" class="carousel slide">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://placehold.co/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
+            <div class="container presentacionEquipo text-center">
+                <h1 class="titulosInicio">LOS CAPOS DE LA TUP</h1>
+                <h3 class="descripcion">Somos estudiantes de la Tecnicatura Universitaria en Programación que conformamos un equipo de desarrollo enfocado en brindar soluciones de software a medida, cumpliendo con los requisitos y necesidades de cada cliente.</h3>
+            </div>
+        </section>
+        <section>
+                <div class="container presentacionEquipo text-center">
+                <h1 class="titulosInicio">NUESTROS PROYECTOS</h1>
+                <div class="row justify-content-center">
+                    <div class="div col-md-3">
+                        <div class="card planes-card">
+                            <div class="card-header text-center planes-card-header">
+                                <img src="https://www.shutterstock.com/image-vector/cute-dark-gray-calculator-blue-600nw-2618023419.jpg" class="imgProyecto" alt="...">
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
-                                <p>Some representative placeholder content for the second slide.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://placehold.co/600x400" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
-                                <p>Some representative placeholder content for the third slide.</p>
+                            <div class="card-body text-center">
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Calculadora</li>
+                                </ul>
+                                <a class="perfilBoton">
+                                    Sitio
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <div class="div col-md-3">
+                        <div class="card planes-card">
+                            <div class="card-header text-center planes-card-header">
+                                <img src="https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2022/8/1/ksfga6rlx2ugfhjd9vnk/league-of-legends" class="imgProyecto" alt="...">
+                            </div>
+                            <div class="card-body text-center">
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Videojuego</li>
+                                </ul>
+                                <a class="perfilBoton">
+                                    Sitio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div col-md-3">
+                        <div class="card planes-card">
+                            <div class="card-header text-center planes-card-header">
+                                <img src="https://serinformatica.ar/wp-content/uploads/2016/10/windows10.jpg" class="imgProyecto" alt="...">
+                            </div>
+                            <div class="card-body text-center">
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Sistema Operativo</li>
+                                </ul>
+                                <a class="perfilBoton">
+                                    Sitio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         <section>
-            <div class="container text-center py-5 precios">
-                <h1 class="display-4">Precios</h1>
-                <p class="lead">Algunos de nuestros precios</p>
+            <div class="container text-center">
+                <h1 class="titulosInicio">NOSOTROS</h1>
+                <div class="row justify-content-center">
+                    <div class="div col-md-3">
+                        <div class="card planes-card">
+                            <div class="card-header text-center planes-card-header">
+                                <img src="/assets/images/matifoto.jpg" class="imagenInicio" alt="...">
+                                <h2 class="planes-text">Matías Sione</h2>
+                            </div>
+                            <div class="card-body text-center">
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Developer</li>
+                                </ul>
+                                <a href="/pages/matiSione.html" class="perfilBoton">
+                                    Perfil
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div col-md-3">
+                        <div class="card planes-card">
+                            <div class="card-header text-center planes-card-header">
+                                <img src="/assets/images/fotoDino.png" class="imagenInicio" alt="...">
+                                <h2 class="planes-text">Gabriel Dino</h2>
+                            </div>
+                            <div class="card-body text-center">
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Developer</li>
+                                </ul>
+                                <a href="/pages/gabrielDino.html" class="perfilBoton">
+                                    Perfil
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div col-md-3">
+                        <div class="card planes-card">
+                            <div class="card-header text-center planes-card-header">
+                                <img src="/assets/images/jerefoto.jpg" class="imagenInicio" alt="...">
+                                <h2 class="planes-text">Jeremías Paletta</h2>
+                            </div>
+                            <div class="card-body text-center">
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Developer</li>
+                                </ul>
+                                <a href="/pages/JerePaletta.html" class="perfilBoton">
+                                    Perfil
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div col-md-3">
+                        <div class="card planes-card">
+                            <div class="card-header text-center planes-card-header">
+                                <img src="assets/images/marcofoto.png" class="imagenInicio" alt="...">
+                                <h2 class="planes-text">Marco Ayquipa</h2>
+                            </div>
+                            <div class="card-body text-center">
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Developer</li>
+                                </ul>
+                                <a href="/pages/marcoAyquipa.html" class="perfilBoton">
+                                    Perfil
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container text-center py-5">
+                <h1 class="titulosInicio">MEJOR PLAN</h1>
             </div>
             <div class="container text-center">
-                <div class="row row-cols-1 row-cols-md-3 justify-content-evenly">
-                    <div class="col mb-4 tarjeta-precios">
-                        <div class="card">
-                            <div class="card-header">
-                                <h1>Basico</h1>
+                <div class="row justify-content-center">
+                    <div class="div col-md-4">
+                        <div class="card planes-card-popular">
+                            <div class="card-header text-center planes-card-header-popular">
+                                <h4 class="planes-text">Plan Profesional</h4>
                             </div>
-                            <div class="card-body">
-                                <h1 class="my-0 font-weight-normal">$1000</h1>
-                                <ul class="list-unstyled mt-3 mb-4">
-                                    <li>1 Pagina web de nashei</li>
-                                    <li>Soporte de nashei</li>
-                                    <li>almacenamiento (no nashei)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4 tarjeta-precios">
-                        <div class="card">
-                            <div class="card-header">
-                                <h1>Basico</h1>
-                            </div>
-                            <div class="card-body">
-                                <h1 class="my-0 font-weight-normal">$1000</h1>
-                                <ul class="list-unstyled mt-3 mb-4">
-                                    <li>1 Pagina web de nashei</li>
-                                    <li>Soporte de nashei</li>
-                                    <li>almacenamiento (no nashei)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4 tarjeta-precios">
-                        <div class="card">
-                            <div class="card-header">
-                                <h1>Basico</h1>
-                            </div>
-                            <div class="card-body">
-                                <h1 class="my-0 font-weight-normal">$1000</h1>
-                                <ul class="list-unstyled mt-3 mb-4">
-                                    <li>1 Pagina web de nashei</li>
-                                    <li>Soporte de nashei</li>
-                                    <li>almacenamiento (no nashei)</li>
+                            <div class="card-body text-center">
+                                <h2 class="planes-text">$199<small>/mes</small></h2>
+                                <ul class="list-unstyled mb-4 planes-text">
+                                    <li>Todo del plan básico</li>
+                                    <li>Soporte prioritario</li>
+                                    <li>Funciones avanzadas</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="container text-center py-5 precios">
+                <a href="/pages/planes.html" class="perfilBoton">
+                                    Ver mas planes
+                                </a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 - Todos los derechos reservados</p>
+        <p>&copy; 2025 - Todos los derechos reservados</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

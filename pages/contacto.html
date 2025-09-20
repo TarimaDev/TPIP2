@@ -17,7 +17,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary justify-content-end">
       <div class="container-fluid">
-        <a class="navbar-brand" href="../index.html">Proyecto</a>
+        <a class="navbar-brand" href="../index.html">LCDLT</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -27,13 +27,26 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="planes.html">Planes</a></li>
-            <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Nosotros
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="matiSione.html">Matías Sione</a></li>
+                <li><a class="dropdown-item" href="gabrielDino.html">Gabriel Dino</a></li>
+                <li><a class="dropdown-item" href="JerePaletta.html">Jeremías Paletta</a></li>
+                <li><a class="dropdown-item" href="marcoAyquipa.html">Marco Ayquipa</a></li>
+              </ul>
+            </li>
             <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacto.html">Contacto</a></li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-          </form>
+          <div class="d-flex align-items-center">
+            <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+              <span class="icon-moon">🌙</span>
+              <span class="icon-sun">☀️</span>
+            </button>
+            <a class="nav-link ms-3" href="carrito.html">🛒 Carrito</a>
+          </div>
         </div>
       </div>
     </nav>
@@ -47,52 +60,99 @@
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="nombre" class="form-label planes-text">Nombre y Apellido</label>
-              <input type="text" class="form-control" id="nombre" required>
-              <div class="invalid-feedback">Por favor ingrese su nonbre.</div>
+              <div class="input-group">
+                <input type="text" class="form-control" id="nombre" required>
+                <span class="input-group-text" id="nombre-icon">👤</span>
+              </div>
+              <div class="invalid-feedback">Por favor ingrese su nombre.</div>
+              <div class="valid-feedback">¡Perfecto!</div>
             </div>
             <div class="col-md-6">
-              <label for="email" class="form-label planes-text">Correo electronico</label>
-              <input type="email" class="form-control" id="email" required>
-              <div class="invalid-feedback">Ingrese un email valido.</div>
+              <label for="email" class="form-label planes-text">Correo electrónico</label>
+              <div class="input-group">
+                <input type="email" class="form-control" id="email" required>
+                <span class="input-group-text" id="email-icon">📧</span>
+              </div>
+              <div class="invalid-feedback">Ingrese un email válido.</div>
+              <div class="valid-feedback">¡Email válido!</div>
             </div>
           </div>
 
           <div class="row mb-3">
             <div class="col-md-6">
               <label for="telefono" class="form-label planes-text">Teléfono</label>
-              <input type="tel" class="form-control" id="telefono" pattern="[0-9]{10}" required>
+              <div class="input-group">
+                <input type="tel" class="form-control" id="telefono" pattern="[0-9]{10}" required>
+                <span class="input-group-text" id="telefono-icon">📞</span>
+              </div>
               <div class="invalid-feedback">Ingrese un teléfono válido de 10 dígitos.</div>
+              <div class="valid-feedback">¡Teléfono válido!</div>
             </div>
             <div class="col-md-6">
-              <label for="fecha" class="form-label planes-text">Fecha de contacto</label>
-              <input type="date" class="form-control" id="fecha" required>
-              <div class="invalid-feedback">Seleccione una fecha.</div>
+              <label for="fecha" class="form-label planes-text">Fecha de nacimiento</label>
+              <div class="input-group">
+                <input type="date" class="form-control" id="fecha" required>
+                <span class="input-group-text" id="fecha-icon">📅</span>
+              </div>
+              <div class="invalid-feedback">Seleccione una fecha de nacimiento válida.</div>
+              <div class="valid-feedback">¡Fecha seleccionada!</div>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="motivo" class="form-label planes-text">Motivo de consulta</label>
-            <select id="motivo" class="form-select" required>
-              <option value="">Seleccione...</option>
-              <option value="planes">Planes y precios</option>
-              <option value="soporte">Soporte tecnico</option>
-              <option value="otros">Otros</option>
-            </select>
+            <div class="input-group">
+              <select id="motivo" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <option value="planes">Planes y precios</option>
+                <option value="soporte">Soporte técnico</option>
+                <option value="otros">Otros</option>
+              </select>
+              <span class="input-group-text" id="motivo-icon">🎯</span>
+            </div>
             <div class="invalid-feedback">Seleccione un motivo.</div>
+            <div class="valid-feedback">¡Motivo seleccionado!</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label planes-text">Preferencia de contacto <span id="preferencia-icon">📋</span></label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferencia" id="preferencia-email" value="email" required>
+              <label class="form-check-label planes-text" for="preferencia-email">
+                📧 Correo electrónico
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferencia" id="preferencia-telefono" value="telefono" required>
+              <label class="form-check-label planes-text" for="preferencia-telefono">
+                📞 Teléfono
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="preferencia" id="preferencia-ambos" value="ambos" required>
+              <label class="form-check-label planes-text" for="preferencia-ambos">
+                🔄 Ambos
+              </label>
+            </div>
+            <div class="invalid-feedback">Seleccione una preferencia de contacto.</div>
+            <div class="valid-feedback">¡Preferencia seleccionada!</div>
           </div>
 
           <div class="mb-3">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="acepto" required>
-              <label class="form-check-label planes-text" for="acepto">Acepto recibir información</label>
-              <div class="invalid-feedback d-block">Debe aceptar para continuar.</div>
+              <label class="form-check-label planes-text" for="acepto">✅ Acepto recibir información</label>
+              <div class="invalid-feedback">Debe aceptar para continuar.</div>
+              <div class="valid-feedback">¡Aceptado!</div>
             </div>
           </div>
 
           <div class="mb-3">
-            <label for="mensaje" class="form-label planes-text">Mensaje</label>
-            <textarea class="form-control" id="mensaje" rows="4" required></textarea>
-            <div class="invalid-feedback">Por favor escriba su mensaje.</div>
+            <label for="mensaje" class="form-label planes-text">Mensaje (opcional)</label>
+            <div class="input-group">
+              <textarea class="form-control" id="mensaje" rows="4"></textarea>
+              <span class="input-group-text" id="mensaje-icon">💬</span>
+            </div>
           </div>
 
           <button type="submit" class="boton">Enviar</button>
@@ -109,52 +169,6 @@
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
   <script src="../js/script.js"></script>
-
-  <script>
-(() => {
-  'use strict';
-  const form = document.getElementById('contactForm');
-
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
-
-    if (!form.checkValidity()) {
-      event.stopPropagation();
-      form.classList.add('was-validated');
-      return;
-    }
-    const data = {
-      nombre: document.getElementById('nombre').value,
-      email: document.getElementById('email').value,
-      telefono: document.getElementById('telefono').value,
-      fecha: document.getElementById('fecha').value,
-      motivo: document.getElementById('motivo').value,
-      preferencia: document.querySelector('input[name="preferencia"]:checked')?.value,
-      aceptaInfo: document.getElementById('acepto').checked,
-      mensaje: document.getElementById('mensaje').value
-    };
-
-    try {
-      const response = await fetch('../mock/data.json', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      if (response.ok) {
-        alert("✅ Formulario enviado correctamente (simulado en data.json).");
-        form.reset();
-        form.classList.remove('was-validated');
-      } else {
-        alert("⚠️ Error al enviar (simulación).");
-      }
-    } catch (error) {
-      console.error("Error en la simulación:", error);
-      alert("❌ No se pudo simular el envío.");
-    }
-  });
-})();
-</script>
 
 </body>
 

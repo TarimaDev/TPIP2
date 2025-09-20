@@ -1,8 +1,0 @@
-Carpeta para imágenes del proyecto.
-
-Aquí puedes colocar:
-- Imágenes JPG, PNG, GIF, SVG
-- Iconos
-- Logos
-- Imágenes de fondo
-- Capturas de pantalla

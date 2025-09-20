@@ -1,10 +1,29 @@
 /* Estilos principales */
 
-/* Variables CSS */
+/* Variables CSS - Modo Oscuro (por defecto) */
 :root {
     --color-fondo: #030712;
     --color-letras: #00bbff;
     --color-botones: #f5339b;
+    --color-texto: #ffffff;
+    --color-texto-secundario: #cccccc;
+    --color-borde: #333333;
+    --color-card: #1a1a1a;
+    --color-navbar: #030712;
+    --color-footer: #333333;
+}
+
+/* Variables CSS - Modo Claro */
+[data-theme="light"] {
+    --color-fondo: #ffffff;
+    --color-letras: #0066cc;
+    --color-botones: #e91e63;
+    --color-texto: #333333;
+    --color-texto-secundario: #666666;
+    --color-borde: #dddddd;
+    --color-card: #f8f9fa;
+    --color-navbar: #ffffff;
+    --color-footer: #f8f9fa;
 }
 
 /* Reset básico */
@@ -18,8 +37,9 @@
 body {
     font-family: "Teko", sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--color-texto);
     background-color: var(--color-fondo);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Estilos del main */
@@ -29,32 +49,36 @@ main {
 
 /* Estilos del footer */
 footer {
-    background-color: #333;
-    color: white;
+    background-color: var(--color-footer);
+    color: var(--color-texto);
     text-align: center;
     padding: 1rem;
     position: fixed;
     bottom: 0;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Estilos generales para la navbar */
 .navbar {
-    background-color: var(--color-fondo) !important;
-    border-bottom: 0.1rem solid rgb(187, 187, 187);
+    background-color: var(--color-navbar) !important;
+    border-bottom: 0.1rem solid var(--color-borde);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar-brand {
-    color: white !important;
+    color: var(--color-texto) !important;
     font-weight: 300px !important;
     font-size: 23px;
+    transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link {
-    color: white !important;
+    color: var(--color-texto) !important;
     font-weight: 300px !important;
     font-size: 23px;
     display: inline;
+    transition: color 0.3s ease;
 }
 
 .navbar-nav .nav-link:hover {
@@ -80,7 +104,37 @@ footer {
 }
 
 .nav-item {
-    margin: 5px 13px 5px 13px;
+    margin: 5px 15px 5px 15px;
+}
+
+/* Mejorar el espaciado de la navbar */
+.navbar-nav {
+    margin-right: 2rem;
+}
+
+/* Mejorar el espaciado del toggle y carrito */
+.theme-toggle {
+    margin-right: 0.5rem;
+}
+
+.nav-link.ms-3 {
+    margin-left: 1rem !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+}
+
+/* Estilo específico para el enlace del carrito */
+.nav-link[href*="carrito"] {
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-link[href*="carrito"]:hover {
+    background-color: rgba(245, 51, 155, 0.1) !important;
+    transform: translateY(-2px) !important;
 }
 
 .navbar-toggler {
@@ -88,19 +142,70 @@ footer {
 }
 
 .dropdown-menu {
-    background-color: var(--color-fondo);
-    border: 1px solid rgb(187, 187, 187);
+    background-color: var(--color-card);
+    border: 1px solid var(--color-borde);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dropdown-item {
+    color: var(--color-texto);
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .dropdown-item:hover {
-    background-color: var(--color-fondo);
+    background-color: var(--color-botones);
+    color: var(--color-fondo);
+}
+
+.dropdown-item:focus {
+    background-color: var(--color-botones);
+    color: var(--color-fondo);
+}
+
+.titulosInicio{
+    font-size: 70px;
+}
+
+.descripcion{
+    font-size: 40px;
+}
+
+.imgProyecto{
+    max-width: 200px;
+    max-height: 200px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 30px;
+
+}
+.imagenInicio{
+    max-width: 200px;
+    max-height: 200px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border: 4px solid var(--color-letras);
+    border-radius: 100px;
+
 }
 
 /* Estilos para botones */
 .boton {
-    color: white;
+    color: var(--color-fondo);
     background-color: var(--color-botones);
     border: none;
+    padding: 10px 50px;
+    border-radius: 50px;
+    transition: 0.5s ease;
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+.perfilBoton{
+    color: var(--color-fondo);
+    background-color: var(--color-botones);
+    border: none;
+    text-decoration: none;
     padding: 10px 50px;
     border-radius: 50px;
     transition: 0.5s ease;
@@ -125,7 +230,7 @@ section {
 
 /* Estilos para precios */
 .precios {
-    color: white;
+    color: var(--color-texto);
 }
 
 .tarjeta-precios {
@@ -155,27 +260,1028 @@ section {
 .planes-card {
     background-color: var(--color-fondo);
     border: 2px solid var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.planes-card:hover {
+    box-shadow: 0 15px 35px rgba(245, 51, 155, 0.4);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--color-botones);
+    background: linear-gradient(135deg, var(--color-fondo) 0%, rgba(245, 51, 155, 0.05) 100%);
 }
 
 .planes-card-popular {
     background-color: var(--color-fondo);
     border: 2px solid var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.planes-card-popular:hover {
+    box-shadow: 0 15px 35px rgba(245, 51, 155, 0.4);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--color-botones);
+    background: linear-gradient(135deg, var(--color-fondo) 0%, rgba(245, 51, 155, 0.05) 100%);
 }
 
 .planes-card-header {
     background-color: var(--color-fondo);
     border-bottom: 1px solid var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .planes-card-header-popular {
     background-color: var(--color-fondo);
     border-bottom: 1px solid var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .planes-text {
     color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.planes-card:hover .planes-text {
+    color: var(--color-botones);
+    text-shadow: 0 0 10px rgba(245, 51, 155, 0.3);
+    transform: scale(1.02);
+}
+
+.planes-card-popular:hover .planes-text {
+    color: var(--color-botones);
+    text-shadow: 0 0 10px rgba(245, 51, 155, 0.3);
+    transform: scale(1.02);
 }
 
 .planes-text-popular {
     color: var(--color-botones);
+    position: relative;
+}
+
+/* Efectos simples en los botones */
+.planes-card .boton,
+.planes-card-popular .boton {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.planes-card .boton:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(245, 51, 155, 0.5);
+    background: linear-gradient(45deg, var(--color-botones), #ff6bb3);
+    animation: pulse 0.6s ease-in-out;
+}
+
+.planes-card-popular .boton:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(245, 51, 155, 0.5);
+    background: linear-gradient(45deg, var(--color-botones), #ff6bb3);
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: translateY(-5px) scale(1.05); }
+    50% { transform: translateY(-7px) scale(1.08); }
+    100% { transform: translateY(-5px) scale(1.05); }
+}
+
+/* Animación de entrada simple */
+.planes-card,
+.planes-card-popular {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideIn 0.6s ease forwards;
+}
+
+.planes-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.planes-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.planes-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Título con entrada simple */
+.planes-text:first-child {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efecto sutil en el plan popular */
+.planes-card-popular::after {
+    content: 'POPULAR';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-botones);
+    background: rgba(245, 51, 155, 0.1);
+    padding: 2px 6px;
+    border-radius: 8px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.planes-card-popular:hover::after {
+    opacity: 1;
+    background: rgba(245, 51, 155, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(245, 51, 155, 0.3);
+}
+
+/* Efecto de brillo especial para el plan popular */
+.planes-card-popular::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.planes-card-popular:hover::before {
+    left: 100%;
+}
+
+/* Efecto de brillo para todos los planes */
+.planes-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.planes-card:hover::before {
+    left: 100%;
+}
+
+/* Estilos para la página del carrito */
+.carrito-body {
+    background-color: var(--color-fondo);
+    color: var(--color-letras);
+}
+
+.carrito-card {
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-letras);
+    color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrito-card:hover {
+    border-color: var(--color-botones);
+    box-shadow: 0 5px 15px rgba(245, 51, 155, 0.2);
+}
+
+.carrito-card .card-body {
+    color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-card:hover .card-body {
+    color: var(--color-botones);
+}
+
+.carrito-card .card-header {
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-letras);
+    color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-item {
+    background-color: rgba(0, 187, 255, 0.1);
+    border: 1px solid var(--color-letras);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrito-item:hover {
+    border-color: var(--color-botones);
+    box-shadow: 0 3px 10px rgba(245, 51, 155, 0.2);
+    transform: translateY(-2px);
+}
+
+.carrito-item .card-body {
+    color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-resumen {
+    background-color: var(--color-fondo);
+    border: 2px solid var(--color-botones);
+    color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.carrito-resumen:hover {
+    box-shadow: 0 8px 20px rgba(245, 51, 155, 0.3);
+}
+
+.carrito-resumen .card-header {
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-botones);
+    color: var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-resumen .card-body {
+    color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-vacio {
+    text-align: center;
+    padding: 3rem;
+    color: var(--color-letras);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-vacio h5 {
+    color: var(--color-letras);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.carrito-vacio p {
+    color: var(--color-letras);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.btn-outline-danger {
+    border-color: var(--color-botones);
+    color: var(--color-botones);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--color-botones);
+    border-color: var(--color-botones);
+    color: var(--color-fondo);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(245, 51, 155, 0.3);
+}
+
+.boton:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.boton:disabled:hover {
+    transform: none;
+}
+
+/* Animaciones de entrada para el carrito */
+.carrito-card,
+.carrito-resumen {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideIn 0.6s ease forwards;
+}
+
+.carrito-card {
+    animation-delay: 0.1s;
+}
+
+.carrito-resumen {
+    animation-delay: 0.2s;
+}
+
+/* Título del carrito con entrada */
+.carrito-body h1 {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.2s;
+}
+
+/* Estilos para mensajes de alerta */
+.alert {
+    border-radius: 8px;
+    font-family: "Teko", sans-serif;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.1);
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.alert-warning {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+/* Estilos para páginas de miembros - desde rama peru */
+
+/* presentacion */
+.presentacion{
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+.contPresentacion{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+.textPresentacion{
+    flex: 1;
+    margin-left: 1rem;
+}
+.textPresentacion h1{
+    font-size: 4rem;
+    margin-bottom: .5rem;
+    font-weight: 700px;
+    color: var(--color-botones);
+}
+.textPresentacion h2{
+    font-size: 3.5rem;
+    margin-bottom: 2.0rem;
+    font-weight: 600px;
+}
+.textPresentacion p{
+    margin-bottom: 4.5rem;
+    font-size: 1.5rem;
+    max-width: 800px;
+    color: var(--color-texto);
+}
+.fotoPresentacion{
+    flex:1;
+    display: flex;
+    justify-content: flex-end;
+}
+.fotoPresentacion img{
+    width: 425px;
+    height: 440px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--color-botones);
+    box-shadow: 0 0 25px rgba(243, 241, 241, 0.308);
+}
+.fotoPresentacion img:hover{
+    transform: scale(1.03);
+    box-shadow: 0 0 30px;
+}
+.linkSocial{
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.linkSocial a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+/* experiencia */
+.titulo{
+    font-size: 4rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+.titulo::after{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-botones);
+}
+.linea{
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.linea:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-borde);
+}
+.item{
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 50px;
+}
+.item:before{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--color-botones);
+    z-index: 1;
+}
+.contenido{
+    background-color: var(--color-card);
+    padding: 1.9rem;
+    border-radius: 10px;
+    border-left: 3px solid var(--color-botones);
+    opacity: 0.8;
+}
+.fecha{
+    display: inline-block;
+    padding: .3rem .8rem;
+    background-color: rgba(245, 51, 155, 0.2);
+    color: var(--color-botones);
+    border-radius: 5px;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+.contenido h3{
+    margin-bottom: .5rem;
+    font-size: 2.3rem;
+    color: var(--color-letras);
+}
+.contenido h4{
+    color: var(--color-texto-secundario);
+    margin-bottom: 1rem;
+    font-size: 1.9rem;
+    font-weight: 500;
+}
+.contenido p{
+    color: var(--color-texto);
+    font-size: 1.4rem;
+}
+.skills{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: .8rem;
+}
+.skills li{
+    font-size: 1.2rem;
+    padding: .4rem .9rem;
+    border-radius: 10px;
+    background-color: var(--color-botones);
+    color: var(--color-fondo);
+}
+
+/* proyectos */
+.contenedorProyecto{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.cardProyecto{
+    background-color: var(--color-card);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-borde);
+}
+.cardProyecto:hover{
+    transform: translate(-3px);
+    box-shadow: 0 0 30px rgba(245, 51, 155, 0.3);
+    border-color: var(--color-botones);
+}
+.imagenProyecto{
+    overflow: hidden;
+}
+.imagenProyecto img{
+    transition: all 0.3s ease;
+    width: 100%;
+}
+.cardProyecto:hover .imagenProyecto img{
+    transform: scale(1.05);
+}
+.infoProyecto{
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.infoProyecto h3{
+    margin-bottom: .8rem;
+    font-size: 2rem;
+    color: var(--color-texto);
+}
+.infoProyecto p{
+    color: var(--color-texto);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    flex-grow: 1;
+}
+.tecProyecto{
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-bottom: 1rem;
+}
+.tecProyecto span{
+    font-size: 1.2rem;
+    padding: .2rem .6rem;
+    background-color: var(--color-borde);
+    border-radius: 20px;
+    color: var(--color-texto);
+}
+.linkProyectos{
+    display: flex;
+    gap: 1rem;
+}
+.linkProyectos a{
+    font-size: 1rem;
+    color: var(--color-botones);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+.linkProyectos a:hover{
+    color: var(--color-fondo);
+}
+
+/* Breakpoints responsive */
+
+/* PC (>1200px) - Diseño desktop completo */
+@media (min-width: 1201px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 24px;
+        margin: 0 15px;
+    }
+    
+    .presentacion h1 {
+        font-size: 4.5rem;
+    }
+    
+    .presentacion h2 {
+        font-size: 4rem;
+    }
+    
+    .fotoPresentacion img {
+        width: 450px;
+        height: 465px;
+    }
+    
+    .tarjeta-precios {
+        max-width: 350px;
+    }
+    
+    .planes-card, .planes-card-popular {
+        min-height: 400px;
+    }
+}
+
+/* Laptop (992px - 1200px) */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 22px;
+        margin: 0 12px;
+    }
+    
+    .presentacion h1 {
+        font-size: 4rem;
+    }
+    
+    .presentacion h2 {
+        font-size: 3.5rem;
+    }
+    
+    .fotoPresentacion img {
+        width: 400px;
+        height: 415px;
+    }
+    
+    .tarjeta-precios {
+        max-width: 320px;
+    }
+    
+    .planes-card, .planes-card-popular {
+        min-height: 380px;
+    }
+    
+    .contPresentacion {
+        gap: 3rem;
+    }
+
+    .imgProyecto{
+        max-width: 170px;
+    }
+}
+
+/* Tablet (768px - 991px) - Menú hamburguesa, reorganización */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 20px;
+        margin: 0 8px;
+    }
+    
+    .presentacion {
+        min-height: 70vh;
+        padding-top: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    
+    .contPresentacion {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .textPresentacion {
+        margin-left: 0;
+    }
+    
+    .textPresentacion h1 {
+        font-size: 3.5rem;
+    }
+    
+    .textPresentacion h2 {
+        font-size: 3rem;
+    }
+    
+    .textPresentacion p {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+    }
+    
+    .fotoPresentacion {
+        justify-content: center;
+    }
+    
+    .fotoPresentacion img {
+        width: 350px;
+        height: 365px;
+    }
+    
+    .tarjeta-precios {
+        max-width: 300px;
+    }
+    
+    .planes-card, .planes-card-popular {
+        min-height: 360px;
+    }
+    
+    .contenedorProyecto {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .titulo {
+        font-size: 3.5rem;
+    }
+
+    .imgProyecto{
+        max-width: 120px;
+        margin-top: 20px;
+    }
+
+    .imagenInicio{
+        max-width: 120px;
+
+    }
+
+    .perfilBoton{
+        padding: 8px 30px;
+        font-size: 16px;
+    }
+
+}
+
+/* Celular (<480px) - Stack vertical, tamaños ajustados */
+@media (max-width: 479px) {
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    .navbar-brand {
+        font-size: 20px;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 18px;
+        margin: 0 5px;
+    }
+    
+    .navbar-toggler {
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .presentacion {
+        min-height: 60vh;
+        padding-top: 1rem;
+        padding-left: 1rem;
+    }
+    
+    .contPresentacion {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .textPresentacion {
+        margin-left: 0;
+    }
+    
+    .textPresentacion h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .textPresentacion h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .textPresentacion p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 100%;
+    }
+    
+    .fotoPresentacion {
+        justify-content: center;
+    }
+    
+    .fotoPresentacion img {
+        width: 250px;
+        height: 265px;
+    }
+    
+    .linkSocial {
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .linkSocial a {
+        font-size: 1.2rem;
+    }
+    
+    .tarjeta-precios {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .planes-card, .planes-card-popular {
+        min-height: 320px;
+    }
+    
+    .planes-card .card-body h2,
+    .planes-card-popular .card-body h2 {
+        font-size: 1.8rem;
+    }
+    
+    .planes-card .card-body ul li,
+    .planes-card-popular .card-body ul li {
+        font-size: 1rem;
+    }
+    
+    .contenedorProyecto {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .cardProyecto {
+        margin-bottom: 1rem;
+    }
+    
+    .titulo {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .contenido h3 {
+        font-size: 1.8rem;
+    }
+    
+    .contenido h4 {
+        font-size: 1.5rem;
+    }
+    
+    .contenido p {
+        font-size: 1.2rem;
+    }
+    
+    .fecha {
+        font-size: 1.2rem;
+    }
+    
+    .skills li {
+        font-size: 1rem;
+        padding: 0.3rem 0.7rem;
+    }
+    
+    .infoProyecto h3 {
+        font-size: 1.6rem;
+    }
+    
+    .infoProyecto p {
+        font-size: 1.3rem;
+    }
+    
+    .tecProyecto span {
+        font-size: 1rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .linkProyectos a {
+        font-size: 0.9rem;
+    }
+    
+    .boton {
+        padding: 8px 30px;
+        font-size: 16px;
+    }
+    
+    .carrito-item .card-body h6 {
+        font-size: 1rem;
+    }
+    
+    .carrito-item .card-body small {
+        font-size: 0.8rem;
+    }
+    
+    .carrito-resumen .card-body {
+        font-size: 0.9rem;
+    }
+    
+    .form-control {
+        font-size: 16px;
+    }
+    
+    .form-label {
+        font-size: 1.1rem;
+    }
+    
+    .invalid-feedback {
+        font-size: 0.9rem;
+    }
+}
+
+/* Estilos para formularios */
+.form-control, .form-select {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--color-card);
+    border-color: var(--color-botones);
+    color: var(--color-texto);
+    box-shadow: 0 0 0 0.2rem rgba(245, 51, 155, 0.25);
+}
+
+.form-label {
+    color: var(--color-texto);
+    transition: color 0.3s ease;
+}
+
+.input-group-text {
+    background-color: var(--color-borde);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto);
+    transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+    background-color: var(--color-botones);
+    border-color: var(--color-botones);
+}
+
+.form-check-label {
+    color: var(--color-texto);
+    transition: color 0.3s ease;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+}
+
+.valid-feedback {
+    color: #28a745;
+}
+
+/* Toggle de tema */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--color-botones);
+    color: var(--color-botones);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--color-botones);
+    color: var(--color-fondo);
+    transform: scale(1.05);
+}
+
+.theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(245, 51, 155, 0.3);
+}
+
+/* Iconos del toggle */
+.theme-toggle .icon-sun {
+    display: none;
+}
+
+.theme-toggle .icon-moon {
+    display: inline;
+}
+
+[data-theme="light"] .theme-toggle .icon-sun {
+    display: inline;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+    display: none;
 }
