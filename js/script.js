@@ -502,31 +502,31 @@ function IniciarFormularioContacto() {
     // Función para validar todo el formulario
     function validarFormulario() {
         if (!validarNombre()) {
-            alert('El nombre debe tener al menos 2 caracteres');
+            MostrarMensaje('El nombre debe tener al menos 2 caracteres', 'warning');
             return false;
         }
         if (!validarEmail()) {
-            alert('Ingresa un email válido');
+            MostrarMensaje('Ingresa un email válido', 'warning');
             return false;
         }
         if (!validarTelefono()) {
-            alert('El teléfono debe tener 10 dígitos');
+            MostrarMensaje('El teléfono debe tener 10 dígitos', 'warning');
             return false;
         }
         if (!validarFecha()) {
-            alert('Selecciona una fecha válida');
+            MostrarMensaje('Selecciona una fecha válida', 'warning');
             return false;
         }
         if (!validarMotivo()) {
-            alert('Selecciona un motivo');
+            MostrarMensaje('Selecciona un motivo', 'warning');
             return false;
         }
         if (!validarPreferencia()) {
-            alert('Selecciona una preferencia de contacto');
+            MostrarMensaje('Selecciona una preferencia de contacto', 'warning');
             return false;
         }
         if (!validarAcepto()) {
-            alert('Debes aceptar recibir información');
+            MostrarMensaje('Debes aceptar recibir información', 'warning');
             return false;
         }
         return true;
@@ -590,12 +590,12 @@ function IniciarFormularioContacto() {
                 localStorage.setItem('contactos', JSON.stringify(contactos));
                 
                 // Mostrar mensaje de éxito
-                alert('¡Mensaje enviado! Te contactaremos pronto.');
+                MostrarMensaje('¡Mensaje enviado! Te contactaremos pronto.', 'success');
                 
                 // Limpiar el formulario
                 form.reset();
             } else {
-                alert('Error al enviar el mensaje. Intenta de nuevo.');
+                MostrarMensaje('Error al enviar el mensaje. Intenta de nuevo.', 'danger');
             }
         });
     }
