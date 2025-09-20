@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
             IniciarPlanes();
         } else if (window.location.pathname.includes('carrito.html')) {
             IniciarCarrito();
+        } else if (window.location.pathname.includes('contacto.html')) {
+            IniciarFormularioContacto();
         }
         
         // Actualizar el contador del carrito en la barra de navegación
@@ -384,4 +386,237 @@ function TemaClaro() {
 // Función principal de inicialización
 function init() {
     console.log('Proyecto inicializado');
+}
+
+// Formulario de contacto - versión simple
+function IniciarFormularioContacto() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    
+    // Obtener los campos del formulario
+    const nombre = document.getElementById('nombre');
+    const email = document.getElementById('email');
+    const telefono = document.getElementById('telefono');
+    const fecha = document.getElementById('fecha');
+    const motivo = document.getElementById('motivo');
+    const acepto = document.getElementById('acepto');
+    const mensaje = document.getElementById('mensaje');
+    
+    // Función para mostrar si un campo está bien o mal
+    function mostrarEstado(campo, estaBien) {
+        const icono = document.getElementById(campo + '-icon');
+        if (icono) {
+            if (estaBien) {
+                icono.textContent = '✅';
+                icono.style.color = 'green';
+            } else {
+                icono.textContent = '❌';
+                icono.style.color = 'red';
+            }
+        }
+    }
+    
+    // Función para validar el nombre
+    function validarNombre() {
+        const valor = nombre.value.trim();
+        if (valor.length < 2) {
+            mostrarEstado('nombre', false);
+            return false;
+        }
+        mostrarEstado('nombre', true);
+        return true;
+    }
+    
+    // Función para validar el email
+    function validarEmail() {
+        const valor = email.value.trim();
+        if (valor.includes('@') && valor.includes('.')) {
+            mostrarEstado('email', true);
+            return true;
+        }
+        mostrarEstado('email', false);
+        return false;
+    }
+    
+    // Función para validar el teléfono
+    function validarTelefono() {
+        const valor = telefono.value.trim();
+        if (valor.length === 10 && !isNaN(valor)) {
+            mostrarEstado('telefono', true);
+            return true;
+        }
+        mostrarEstado('telefono', false);
+        return false;
+    }
+    
+    // Función para validar la fecha
+    function validarFecha() {
+        const valor = fecha.value;
+        if (valor === '') {
+            mostrarEstado('fecha', false);
+            return false;
+        }
+        const hoy = new Date();
+        const fechaSeleccionada = new Date(valor);
+        if (fechaSeleccionada > hoy) {
+            mostrarEstado('fecha', false);
+            return false;
+        }
+        mostrarEstado('fecha', true);
+        return true;
+    }
+    
+    // Función para validar el motivo
+    function validarMotivo() {
+        if (motivo.value === '') {
+            mostrarEstado('motivo', false);
+            return false;
+        }
+        mostrarEstado('motivo', true);
+        return true;
+    }
+    
+    // Función para validar la preferencia
+    function validarPreferencia() {
+        const radios = document.querySelectorAll('input[name="preferencia"]');
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                mostrarEstado('preferencia', true);
+                return true;
+            }
+        }
+        mostrarEstado('preferencia', false);
+        return false;
+    }
+    
+    // Función para validar el checkbox
+    function validarAcepto() {
+        if (acepto.checked) {
+            mostrarEstado('acepto', true);
+            return true;
+        }
+        mostrarEstado('acepto', false);
+        return false;
+    }
+    
+    // Función para validar todo el formulario
+    function validarFormulario() {
+        if (!validarNombre()) {
+            alert('El nombre debe tener al menos 2 caracteres');
+            return false;
+        }
+        if (!validarEmail()) {
+            alert('Ingresa un email válido');
+            return false;
+        }
+        if (!validarTelefono()) {
+            alert('El teléfono debe tener 10 dígitos');
+            return false;
+        }
+        if (!validarFecha()) {
+            alert('Selecciona una fecha válida');
+            return false;
+        }
+        if (!validarMotivo()) {
+            alert('Selecciona un motivo');
+            return false;
+        }
+        if (!validarPreferencia()) {
+            alert('Selecciona una preferencia de contacto');
+            return false;
+        }
+        if (!validarAcepto()) {
+            alert('Debes aceptar recibir información');
+            return false;
+        }
+        return true;
+    }
+    
+    // Función para enviar el formulario
+    function enviarFormulario() {
+        if (!validarFormulario()) {
+            return;
+        }
+        
+        // Recopilar los datos
+        const datos = {
+            nombre: nombre.value,
+            email: email.value,
+            telefono: telefono.value,
+            fecha: fecha.value,
+            motivo: motivo.value,
+            preferencia: document.querySelector('input[name="preferencia"]:checked').value,
+            aceptaInfo: acepto.checked,
+            mensaje: mensaje.value
+        };
+        
+        // Simular envío con Fetch API
+        fetch('mock/data.json', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
+        })
+        .then(function(response) {
+            // Simular que el servidor responde bien
+            return { ok: true };
+        })
+        .catch(function(error) {
+            // Simular error de red
+            return { ok: false, error: error };
+        })
+        .then(function(result) {
+            if (result.ok) {
+                // Guardar en localStorage como respaldo
+                let contactos = [];
+                if (localStorage.getItem('contactos')) {
+                    contactos = JSON.parse(localStorage.getItem('contactos'));
+                }
+                
+                // ID incremental simple
+                let nuevoId = 1;
+                if (contactos.length > 0) {
+                    nuevoId = contactos.length + 1;
+                }
+                
+                const nuevoContacto = {
+                    id: nuevoId,
+                    ...datos,
+                    fechaEnvio: new Date().toISOString()
+                };
+                
+                contactos.push(nuevoContacto);
+                localStorage.setItem('contactos', JSON.stringify(contactos));
+                
+                // Mostrar mensaje de éxito
+                alert('¡Mensaje enviado! Te contactaremos pronto.');
+                
+                // Limpiar el formulario
+                form.reset();
+            } else {
+                alert('Error al enviar el mensaje. Intenta de nuevo.');
+            }
+        });
+    }
+    
+    // Agregar eventos para validar mientras el usuario escribe
+    nombre.addEventListener('input', validarNombre);
+    email.addEventListener('input', validarEmail);
+    telefono.addEventListener('input', validarTelefono);
+    fecha.addEventListener('change', validarFecha);
+    motivo.addEventListener('change', validarMotivo);
+    acepto.addEventListener('change', validarAcepto);
+    
+    // Validar preferencia cuando cambie
+    const radios = document.querySelectorAll('input[name="preferencia"]');
+    for (let i = 0; i < radios.length; i++) {
+        radios[i].addEventListener('change', validarPreferencia);
+    }
+    
+    // Agregar el evento de envío
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        enviarFormulario();
+    });
 }
