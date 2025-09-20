@@ -903,7 +903,7 @@ section {
     }
 }
 
-/* Laptop (992px - 1200px) - Adaptaciones menores */
+/* Laptop (992px - 1200px) */
 @media (min-width: 992px) and (max-width: 1200px) {
     .container {
         max-width: 960px;
@@ -1167,7 +1167,7 @@ section {
     }
     
     .form-control {
-        font-size: 16px; /* Evita zoom en iOS */
+        font-size: 16px;
     }
     
     .form-label {
