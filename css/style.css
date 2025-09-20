@@ -170,7 +170,7 @@ footer {
     font-size: 40px;
 }
 
-.imagenProyecto{
+.imgProyecto{
     max-width: 200px;
     max-height: 200px;
     aspect-ratio: 1/1;
@@ -698,6 +698,7 @@ section {
     align-items: center;
     justify-content: center;
     font-size: 1.4rem;
+    text-decoration: none;
 }
 
 /* experiencia */
@@ -938,6 +939,10 @@ section {
     .contPresentacion {
         gap: 3rem;
     }
+
+    .imgProyecto{
+        max-width: 170px;
+    }
 }
 
 /* Tablet (768px - 991px) - Menú hamburguesa, reorganización */
@@ -1005,6 +1010,22 @@ section {
     .titulo {
         font-size: 3.5rem;
     }
+
+    .imgProyecto{
+        max-width: 120px;
+        margin-top: 20px;
+    }
+
+    .imagenInicio{
+        max-width: 120px;
+
+    }
+
+    .perfilBoton{
+        padding: 8px 30px;
+        font-size: 16px;
+    }
+
 }
 
 /* Celular (<480px) - Stack vertical, tamaños ajustados */
